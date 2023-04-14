@@ -7,4 +7,21 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-PROJECT_TITLES = 10.times.map { Faker::Intrnet.domain_word }
+PROJECT_TITLES = 10.times.map { Faker::Internet.domain_word }
+
+SPLIT = 0.4
+OFFSET = PROJECT_TITLES.length * SPLIT
+
+PROJECT_USERS = {
+  'foo@example.com' => PROJECT_TITLES[0, OFFSET],
+  'bar@example.com' => PROJECT_TITLES[OFFSET..-1]
+}
+
+PROJECT_USERS.each do |email, projects|
+  user = User.new(email: email, password: 'secret')
+
+  projects.each { |title| user.projects.build(title: title)}
+
+  user.save
+
+end
