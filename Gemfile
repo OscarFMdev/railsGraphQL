@@ -12,6 +12,7 @@ gem "sprockets-rails"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
+# For authentication
 gem "devise"
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -56,6 +57,9 @@ group :development, :test do
 end
 
 group :development do
+  # Fake data
+  gem "faker"
+  
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
