@@ -13,5 +13,23 @@ module Types
     def users
       User.all
     end
+
+    field :me, Types::UserType, null:false,
+      description: "Return the first user"
+    def me
+      User.first
+    end
+
+    field :projects, [Types::ProjectType], null:false,
+      description:"The projects for the current user"
+    def projects
+      Project.all
+    end
+
+    field :hello, String, null:false,
+      description: "Returns Hello World"
+    def hello
+      "Hello World"
+    end
   end
 end
