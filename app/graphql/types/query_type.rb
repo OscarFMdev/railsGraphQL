@@ -8,6 +8,7 @@ module Types
     # They will be entry points for queries on your schema.
 
     # TODO: remove me
+
     field :users, [Types::UserType], null: false,
       description: "Return a list of users"
     def users
