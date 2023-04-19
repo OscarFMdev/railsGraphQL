@@ -17,13 +17,13 @@ module Types
     field :me, Types::UserType, null:false,
       description: "Return the first user"
     def me
-      User.first
+      @context[:current_user]
     end
 
     field :projects, [Types::ProjectType], null:false,
       description:"The projects for the current user"
     def projects
-      Project.all
+      @context[:current_user].projects
     end
 
     field :hello, String, null:false,
